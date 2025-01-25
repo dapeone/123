@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+  int rowCount, columnCount, matrixMaxRowIndex, matrixMaxColumnIndex, matrixMinRowIndex, matrixMinColumnIndex;
+
+  cout <<"Enter number of lines ";
+  cin >> rowCount;
+  cout <<"Enter number of columns ";
+  cin >> columnCount;
+  cout <<"Enter matrix elements"<< endl;
+
+  double matrix[rowCount][columnCount], min, max;
+
+  for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex){
+    for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex){
+      cout <<"Enter matrix element ["<< rowIndex << "] [" << columnIndex << "] ";
+      cin >> matrix[rowIndex][columnIndex];
+    }
+  }
+  
+  min = matrix[0][0];
+  max = matrix[0][0];
+  
+  for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex){
+    for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex){
+      if (matrix [rowIndex][columnIndex] > max) {
+        max = matrix[rowIndex][columnIndex];
+        matrixMaxRowIndex = rowIndex;
+        matrixMaxColumnIndex = columnIndex;
+      }
+
+      else if (matrix[rowIndex][columnIndex] < min) {
+        min = matrix[rowIndex][columnIndex];
+        matrixMinRowIndex = rowIndex;
+        matrixMinColumnIndex = columnIndex;
+      }
+    }
+  }
+  
+  cout << matrixMinRowIndex << "  " << matrixMinColumnIndex << endl;
+  
+      
+  cout <<"Source matrix:"<< endl;
+  for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
+    for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex){
+      cout << matrix[rowIndex][columnIndex] << " ";
+    }
+  cout << endl;
+  }
+  
+  cout << "Minimum matrix element: " << min << endl << "Maximum matrix element: " << max << endl;
+  
+  cout << matrixMaxRowIndex << " " << matrixMaxColumnIndex << endl;
+  cout << matrixMinRowIndex << " " << matrixMinColumnIndex << endl;
+  
+ // matrix[matrixMaxRowIndex][matrixMaxColumnIndex] = min;
+ // matrix[matrixMinRowIndex][matrixMinColumnIndex] = max;
+  
+  cout <<"Processed matrix:"<< endl;
+  for (int rowIndex = 0; rowIndex < rowCount; ++rowIndex) {
+    for (int columnIndex = 0; columnIndex < columnCount; ++columnIndex){
+      cout << matrix[rowIndex][columnIndex] << " ";
+    }
+  cout << endl;
+  }
+}
